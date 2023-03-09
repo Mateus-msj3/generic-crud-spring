@@ -13,7 +13,10 @@ public class CarroServiceImpl extends AbstractBaseServiceImpl<Carro, Integer> im
 
     private CarroRepository carroRepository;
 
+
     public CarroServiceImpl(CarroRepository carroRepository) {
         super(carroRepository);
     }
+
+
 }

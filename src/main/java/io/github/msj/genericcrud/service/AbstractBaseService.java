@@ -1,21 +1,44 @@
 package io.github.msj.genericcrud.service;
 
 import io.github.msj.genericcrud.domain.BaseEntity;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 public interface AbstractBaseService<T extends BaseEntity, ID extends Serializable>{
-    public abstract T save(T entity);
-    public abstract List<T> findAll(); // you might want a generic Collection if u prefer
+     abstract T save(T entity);
 
-    public abstract Optional<T> findById(ID entityId);
-    public abstract T update(T entity);
-    public abstract T updateById(T entity, ID entityId);
-    public abstract void delete(T entity);
-    public abstract void deleteById(ID entityId);
+     abstract List<T> findAll();
 
-    // other methods u might need to be generic
+     abstract Optional<T> findById(ID entityId);
+
+     abstract T update(T entity);
+
+     abstract T updateById(T entity, ID entityId);
+
+     abstract void delete(T entity);
+
+     abstract void deleteById(ID entityId);
+
+    abstract Page<T> findAll(Pageable pageable);
+
+    abstract Optional<T> findOne(Example<T> example);
+
+    abstract List<T> findAll(Example<T> example);
+
+    abstract Iterable<T> findAll(Example<T> example, Sort sort);
+
+    abstract Page<T> findAll(Example<T> example, Pageable pageable);
+
+    abstract long count(Example<T> example);
+
+    abstract long count();
+
+    abstract boolean exists(Example<T> example);
 
 }
